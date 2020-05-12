@@ -3,10 +3,10 @@ import {Button, StyleSheet, Text, View} from "react-native";
 
 export const HomeScreen: FC<any> = (props) => {
     const {navigation} = props;
-    const [cupStatistic, setStat] = useState<number>(0);
-    const [dozeStatistic, setStat2] = useState<number>(0);
-    const coffein:number = dozeStatistic*126;
-    const dayDoze:number = coffein/400*100;
+    const [cupStatistic, setStatCup] = useState<number>(0);
+    const [dozeStatistic, setStatDoze] = useState<number>(0);
+    const caffein:number = dozeStatistic*126;
+    const dayDoze:number = caffein/400*100;
 
     return (
         <>
@@ -16,15 +16,15 @@ export const HomeScreen: FC<any> = (props) => {
                     color={"#8d8d8d"}
                     onPress={() => {navigation.navigate('Choose Your Coffee Type', {
                         cupCounter: (counter) => {
-                            setStat(cupStatistic + counter)
+                            setStatCup(cupStatistic + counter)
                         },
                         dozeCounter: (counter2) => {
-                            setStat2(dozeStatistic + counter2)
+                            setStatDoze(dozeStatistic + counter2)
                         } })
                     }}
                 />
                 <Text style={styles.text}>Cups Total: {cupStatistic}</Text>
-                <Text style={styles.text}>Caffeine Total: {coffein} mg.</Text>
+                <Text style={styles.text}>Caffeine Total: {caffein} mg.</Text>
                 <Text style={styles.text}>Or {dayDoze.toFixed(1)}% of Daily Dose</Text>
 
             </View>

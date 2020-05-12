@@ -3,26 +3,26 @@ import {Button, Image, ScrollView, StyleSheet, Text, TouchableOpacity} from "rea
 
 
 export function ChoosingCoffeeTypes({route, navigation}) {
-    const [counter, setCounter] = useState<number>(0);
-    const [counter2, setCounter2] = useState<number>(0);
-    const nPlus1 = () => {
-        setCounter(counter + 1)
-        setCounter2(counter2+1)
+    const [counterCup, setCounterCup] = useState<number>(0);
+    const [counterDoze, setCounterDoze] = useState<number>(0);
+    const addOneCupOneDoze = () => {
+        setCounterCup(counterCup + 1)
+        setCounterDoze(counterDoze + 1)
     };
-    const nPlus2 = () => {
-        setCounter(counter + 1)
-        setCounter2(counter2+2)
+    const addOneCupTwoDoze = () => {
+        setCounterCup(counterCup + 1)
+        setCounterDoze(counterDoze + 2)
     };
 
-    const { cupCounter } = route.params;
-    const { dozeCounter } = route.params;
+    const {cupCounter} = route.params;
+    const {dozeCounter} = route.params;
 
 
     return (
         <ScrollView style={styles.scrollView}>
             <TouchableOpacity
                 style={styles.touchOpac}
-                onPress={nPlus1}>
+                onPress={addOneCupOneDoze}>
                 <Image
                     source={require('./assets/espresso.jpg')}
                     style={styles.image}
@@ -31,7 +31,7 @@ export function ChoosingCoffeeTypes({route, navigation}) {
 
             <TouchableOpacity
                 style={styles.touchOpac}
-                onPress={nPlus2}>
+                onPress={addOneCupTwoDoze}>
                 <Image
                     source={require('./assets/doubleEspresso.jpg')}
                     style={styles.image}
@@ -39,7 +39,7 @@ export function ChoosingCoffeeTypes({route, navigation}) {
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.touchOpac}
-                onPress={nPlus1}>
+                onPress={addOneCupOneDoze}>
                 <Image
                     source={require('./assets/americano.jpg')}
                     style={styles.image}
@@ -47,7 +47,7 @@ export function ChoosingCoffeeTypes({route, navigation}) {
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.touchOpac}
-                onPress={nPlus1}>
+                onPress={addOneCupOneDoze}>
                 <Image
                     source={require('./assets/cappuchino.jpg')}
                     style={styles.image}
@@ -55,7 +55,7 @@ export function ChoosingCoffeeTypes({route, navigation}) {
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.touchOpac}
-                onPress={nPlus1}>
+                onPress={addOneCupOneDoze}>
                 <Image
                     source={require('./assets/latte.jpg')}
                     style={styles.image}
@@ -63,31 +63,29 @@ export function ChoosingCoffeeTypes({route, navigation}) {
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.touchOpac}
-                onPress={nPlus1}>
+                onPress={addOneCupOneDoze}>
                 <Image
                     source={require('./assets/flatWhite.jpg')}
                     style={styles.image}
                 />
             </TouchableOpacity>
 
-            <Text style={styles.text}>Total: {counter}</Text>
+            <Text style={styles.text}>Total: {counterCup}</Text>
 
             <Button
                 title={'Confirm'}
                 color={"#8d8d8d"}
                 onPress={() => {
-                navigation.navigate('Coffee Counter')
-                cupCounter(counter)
-                dozeCounter(counter2)
-            }} />
+                    navigation.navigate('Coffee Counter')
+                    cupCounter(counterCup)
+                    dozeCounter(counterDoze)
+                }}/>
         </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    scrollView: {
-        //backgroundColor: '#fff',
-    },
+    scrollView: {},
 
     text: {
         fontSize: 25,
@@ -107,7 +105,6 @@ const styles = StyleSheet.create({
     },
     button: {
         alignItems: "center",
-        //backgroundColor: "#DDDDDD",
         padding: 10,
         color: "#fff",
     },
